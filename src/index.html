@@ -15,7 +15,11 @@
             <div class="flex">
               <!-- Website Logo -->
               <a href="./index.html" class="flex items-center py-4 px-2">
-                <img src="./assets/images/logo.png" alt="" class="h-8 hover:scale-105 transition duration-300">
+                <img
+                  src="./assets/images/logo.png"
+                  alt=""
+                  class="h-8 hover:scale-105 transition duration-300"
+                />
               </a>
             </div>
           </div>
@@ -27,23 +31,57 @@
               >Inicio</a
             >
             <a
-              href="#"
+              href="./farmacia.html"
               class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
               >Farmacia</a
             >
             <a
-              href="#"
+              href="./jugueteria.html"
               class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
-              >Juguetes</a
+              >Juguetería</a
             >
             <a
               href="./contacto.html"
               class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
               >Contacto</a
             >
+            <a
+              class="openButton cursor-pointer p-2 mr-4 hover:bg-primary-400 rounded-xl transition duration-300 stroke-primary-500 hover:stroke-secondary"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                />
+              </svg>
+            </a>
           </div>
           <!-- Mobile menu button -->
           <div class="md:hidden flex items-center">
+            <a
+              class="openButton2 cursor-pointer p-2 mr-4 hover:bg-primary-400 rounded-xl transition duration-300 stroke-primary-500 hover:stroke-secondary"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                />
+              </svg>
+            </a>
             <button class="outline-none mobile-menu-button">
               <svg
                 class="w-6 h-6 text-primary-500 hover:text-primary-400 cursor-pointer"
@@ -73,16 +111,16 @@
           </li>
           <li>
             <a
-              href="./upcomingevents.html"
+              href="./farmacia.html"
               class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
               >Farmacia</a
             >
           </li>
           <li>
             <a
-              href="./pastevents.html"
+              href="./jugueteria.html"
               class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
-              >Juguetes</a
+              >Juguetería</a
             >
           </li>
           <li>
@@ -103,8 +141,126 @@
         })
       </script>
     </nav>
-    <div class="flex w-[500px] justify-center">
-      <h1 class="font-bold text-2xl text-gray-500">Paws and Claws</h1>
+
+    <!-- Collapsed Shopping Cart-->
+    <div
+      class="sidebar fixed top-0 bottom-0 right-[-320px] p-2 w-[320px] overflow-y-auto text-center bg-primary-500 ease-in-out duration-300 shadow-md"
+    >
+      <div class="text-secondary text-xl">
+        <div class="p-2.5 mt-1 flex items-center">
+          <svg
+            class="cursor-pointer h-8 w-8 closeButton hover:scale-105 duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <h1 class="font-bold ml-3">Carro de compras</h1>
+        </div>
+        <hr class="my-2 text-secondary" />
+        <!-- Dynamically rendered shopping cart items-->
+      </div>
     </div>
+
+    <section>
+      <div
+        class="flex flex-col place-items-start justify-center h-screen bg-cover bg-right"
+        style="background-image: url(./assets/images/hero1.jpg)"
+      >
+        <div class="bg-black bg-opacity-30 w-full h-full flex items-center justify-center md:justify-start p-4">
+          <div class="md:ml-52">
+            <h1 class="text-secondary font-bold tracking-tighter text-7xl">
+              Paws and Claws
+            </h1>
+            <p
+              class="text-secondary font-extrabold tracking-tighter text-4xl w-72"
+            >
+              Tenemos todo lo que tu peludo amigo necesita.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destacados Farmacia -->
+    <section class="flex flex-col justify-center">
+      <div
+        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
+      >
+        <h1 class="font-bold text-2xl text-secondary">Destacados Farmacia</h1>
+      </div>
+      <div
+        class="h-auto shadow flex items-center justify-center flex-wrap destacadosFarmacia"
+      >
+        <!-- Dynamically Rendered Cards -->
+      </div>
+    </section>
+
+    <!-- Destacados Juguetes -->
+    <section class="flex flex-col justify-center">
+      <div
+        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
+      >
+        <h1 class="font-bold text-2xl text-secondary">Destacados Juguetes</h1>
+      </div>
+      <div
+        class="h-full shadow flex items-center justify-center flex-wrap destacadosJuguetes"
+      >
+        <!-- Dynamically Rendered Cards -->
+      </div>
+    </section>
+
+    <!-- empieza acerca de nosotros -->
+    <section class="flex flex-col">
+      <div
+        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
+      >
+        <h1 class="font-bold text-2xl text-secondary">Acerca de Nosotros</h1>
+      </div>
+      <div
+        class="flex flex-wrap justify-around items-center bg-cover bg-fixed bg-left-top"
+        style="background-image: url(./assets/images/dog_shop.jpeg)"
+      >
+        <div
+          class="flex flex-wrap justify-around bg-black bg-opacity-50 md:p-6"
+        >
+          <div
+            class="max-w-xl w-full text-6xl rounded-lg hover:scale-105 duration-300 m-2 md:w-1/3 p-6"
+          >
+            <p
+              class="text-secondary font-bold tracking-tighter drop-shadow-lg shadow-black"
+            >
+              Somos expertos en las necesidades y cuidados para tu compañero
+              fiel.
+            </p>
+          </div>
+          <div
+            class="flex flex-col justify-around w-[25rem] md:w-1/3 text-lg rounded-lg bg bg-primary-500 hover:bg-primary-300 hover:scale-105 duration-300 m-2 shadow-md shadow-primary-900 hover:shadow-none bg-opacity-80"
+          >
+            <p class="p-4 text-secondary">
+              Somos una tienda de mascotas con una gran pasión por todas las
+              criaturas peludas. Ofrecemos una amplia variedad de productos y
+              servicios de alta calidad para que tu mascota sea feliz y
+              saludable.
+            </p>
+            <p class="p-4 text-secondary">
+              Te damos las <span class="font-bold">GRACIAS</span> por escoger
+              nuestra tienda para todo lo que nesecita tu mascota. Te esperamos
+              para ayudarte a ti y a tu amiguito peludo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./js/dynamicProducts.js"></script>
   </body>
 </html>

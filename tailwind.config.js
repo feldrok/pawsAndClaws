@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-  content: ["./src/**/*.html", "./src/**/*.js"],
+  content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
       colors: {
@@ -19,6 +19,10 @@ module.exports = {
       },
     },
     variants: {},
-    plugins: [],
+    plugins: [
+      require("cssnano")({
+        preset: "default",
+      }),
+    ],
   },
 }
