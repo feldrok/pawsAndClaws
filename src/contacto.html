@@ -27,8 +27,8 @@
           <!-- Primary Navbar items -->
           <div class="hidden md:flex items-center space-x-1 gap-2">
             <a
-              href="#"
-              class="py-2 px-4 text-secondary bg-primary-500 rounded-xl font-semibold"
+              href="./index.html"
+              class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
               >Inicio</a
             >
             <a
@@ -43,7 +43,7 @@
             >
             <a
               href="./contacto.html"
-              class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
+              class="py-2 px-4 text-secondary bg-primary-500 rounded-xl font-semibold"
               >Contacto</a
             >
             <a
@@ -105,8 +105,8 @@
         <ul class="">
           <li class="active">
             <a
-              href="#"
-              class="block text-sm px-2 py-4 text-white bg-primary-500 font-semibold"
+              href="./index.html"
+              class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
               >Inicio</a
             >
           </li>
@@ -119,27 +119,27 @@
           </li>
           <li>
             <a
-              href="./jugueteria.html"
+              href="./pastevents.html"
               class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
               >Juguetería</a
             >
           </li>
           <li>
             <a
-              href="./contact.html"
-              class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
+              href="./contacto.html"
+              class="block text-sm px-2 py-4 text-white bg-primary-500 font-semibold"
               >Contacto</a
             >
           </li>
         </ul>
       </div>
       <script>
-        const btn = document.querySelector("button.mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+        const btn = document.querySelector("button.mobile-menu-button")
+        const menu = document.querySelector(".mobile-menu")
 
         btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-        });
+          menu.classList.toggle("hidden")
+        })
       </script>
     </nav>
 
@@ -172,98 +172,163 @@
       </div>
     </div>
 
-    <section>
-      <div
-        class="flex flex-col place-items-start justify-center h-screen bg-cover bg-right"
-        style="background-image: url(./assets/images/hero1.jpg)"
-      >
-        <div
-          class="bg-black bg-opacity-30 w-full h-full flex items-center justify-center md:justify-start p-4"
-        >
-          <div class="md:ml-52">
-            <h1 class="text-secondary font-bold tracking-tighter text-7xl">
-              Paws and Claws
-            </h1>
-            <p
-              class="text-secondary font-extrabold tracking-tighter text-4xl w-72"
+    <section class="text-gray-600 body-font relative">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-primary-500"
+          >
+            Contactanos
+          </h1>
+          <p
+            class="lg:w-2/3 mx-auto leading-relaxed text-base text-primary-500"
+          >
+            Si necesitas mayor información sobre tu mascota, envía el formulario
+            con los datos necesarios.
+          </p>
+        </div>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <form id="form" class="flex flex-wrap -m-2">
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="name" class="leading-7 text-sm text-primary-500"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Juan"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-primary-500"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Perez"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="phone" class="leading-7 text-sm text-primary-500"
+                  >Teléfono</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="+ xx x xxxx xxxx"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-primary-500"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="example@gmail.com"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label
+                  for="tipoMascota"
+                  class="leading-7 text-sm text-primary-500"
+                  >Tipo Mascota</label
+                >
+                <select
+                  id="tipoMascota"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
+                  <option selected>Tipo mascota</option>
+                  <option value="US">Perro</option>
+                  <option value="CA">Gato</option>
+                  <option value="FR">Ave</option>
+                  <option value="DE">Animal Pequeño</option>
+                  <option value="DE">Reptil</option>
+                  <option value="DE">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-primary-500"
+                  >Nombre Mascota</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Pelusa"
+                />
+              </div>
+            </div>
+
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="message" class="leading-7 text-sm text-primary-500"
+                  >Mensaje</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                  placeholder="Escribe algo..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <input
+                type="submit"
+                class="flex mx-auto text-white bg-primary-500 border-0 py-2 px-8 focus:outline-none hover:bg-primary-400 shadow-md hover:shadow-none hover:scale-105 duration-300 rounded-full text-lg cursor-pointer"
+              />
+            </div>
+          </form>
+
+          <div id="output" class="flex p-4 justify-center">
+
+          </div>
+          <div
+            class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
+          >
+            <a class="text-primary-500" href="mailto:contact@pawsandclaws.com"
+              >contact@pawsandclaws.com</a
             >
-              Tenemos todo lo que tu peludo amigo necesita.
+            <p class="leading-normal my-5">
+              Rio de Janeiro 300,<br />Buenos Aires
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Destacados Farmacia -->
-    <section class="flex flex-col justify-center">
-      <div
-        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
-      >
-        <h1 class="font-bold text-2xl text-secondary">Destacados Farmacia</h1>
-      </div>
-      <div
-        class="h-auto shadow flex items-center justify-center flex-wrap destacadosFarmacia"
-      >
-        <!-- Dynamically Rendered Cards -->
-      </div>
-    </section>
+    <script>
+      const form = document.getElementById("form")
+      const output = document.getElementById("output")
 
-    <!-- Destacados Juguetes -->
-    <section class="flex flex-col justify-center">
-      <div
-        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
-      >
-        <h1 class="font-bold text-2xl text-secondary">Destacados Juguetes</h1>
-      </div>
-      <div
-        class="h-full shadow flex items-center justify-center flex-wrap destacadosJuguetes"
-      >
-        <!-- Dynamically Rendered Cards -->
-      </div>
-    </section>
+      form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        output.innerHTML = `<p class="text-center font-medium text-primary-500">Se ha enviado correctamente, nos contactaremos contigo a la brevedad, muchas gracias!</p>`
+      })
 
-    <!-- empieza acerca de nosotros -->
-    <section class="flex flex-col">
-      <div
-        class="h-20 w-full bg-primary-500 flex items-center justify-center shadow-md"
-      >
-        <h1 class="font-bold text-2xl text-secondary">Acerca de Nosotros</h1>
-      </div>
-      <div
-        class="flex flex-wrap justify-around items-center bg-cover bg-fixed bg-left-top"
-        style="background-image: url(./assets/images/dog_shop.jpeg)"
-      >
-        <div
-          class="flex flex-wrap justify-around bg-black bg-opacity-50 md:p-6"
-        >
-          <div
-            class="max-w-xl w-full text-6xl rounded-lg hover:scale-105 duration-300 m-2 md:w-1/3 p-6"
-          >
-            <p
-              class="text-secondary font-bold tracking-tighter drop-shadow-lg shadow-black"
-            >
-              Somos expertos en las necesidades y cuidados para tu compañero
-              fiel.
-            </p>
-          </div>
-          <div
-            class="flex flex-col justify-around w-[25rem] md:w-1/3 text-lg rounded-lg bg bg-primary-500 hover:bg-primary-300 hover:scale-105 duration-300 m-2 shadow-md shadow-primary-900 hover:shadow-none bg-opacity-80"
-          >
-            <p class="p-4 text-secondary">
-              Somos una tienda de mascotas con una gran pasión por todas las
-              criaturas peludas. Ofrecemos una amplia variedad de productos y
-              servicios de alta calidad para que tu mascota sea feliz y
-              saludable.
-            </p>
-            <p class="p-4 text-secondary">
-              Te damos las <span class="font-bold">GRACIAS</span> por escoger
-              nuestra tienda para todo lo que nesecita tu mascota. Te esperamos
-              para ayudarte a ti y a tu amiguito peludo.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </script>
 
     <footer class="flex bg-primary-500 w-full">
       <div class="flex flex-col lg:flex-row items-center w-full justify-around p-4">

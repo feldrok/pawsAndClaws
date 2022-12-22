@@ -30,7 +30,15 @@ export function renderProduct(container, productsFiltered) {
     `
   })
   displayProduct = displayProduct.join("")
-  container.innerHTML = displayProduct
+  if (displayProduct === "") {
+    container.innerHTML = `
+    <h2 class="text-4xl font-bold text-primary-500 w-full text-center p-24">
+      No hay productos disponibles
+    </h2>
+    `
+  } else {
+    container.innerHTML = displayProduct
+  }
 }
 
 export function getParameter() {
@@ -42,6 +50,14 @@ export function getParameter() {
 
 export function renderProductDetails(productId, data, container) {
   let products = data.find((product) => product._id == productId)
+  let warning
+  if (products.disponibles === 0) {
+    warning = `<span class="title-font font-medium text-2xl text-red-500 mt-6">Producto agotado</span>`
+  } else if (products.disponibles < 5) {
+    warning = `<span class="title-font font-medium text-2xl text-yellow-500 mt-6">Últimas unidades disponibles</span>`
+  } else {
+    warning = `<span class="title-font font-medium text-2xl text-green-500 mt-6">Unidades disponibles</span>`
+  }
   container.innerHTML = `
     <div class="container px-5 py-24 mx-auto flex">
       <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center">
@@ -50,7 +66,9 @@ export function renderProductDetails(productId, data, container) {
           <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">${products.categoria}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mt-4">${products.producto}</h1>
           <p class="leading-relaxed mt-6">${products.descripcion}</p>
-          <div class="flex">
+          <div class="flex flex-col">
+            <span class="title-font font-medium text-lg text-gray-900 mt-6">Disponibles: ${products.disponibles}</span>
+            ${warning}
             <span class="title-font font-bold text-4xl text-gray-900 mt-6">$ ${products.precio}</span>
           </div>
           <div class="flex mt-6">
@@ -107,7 +125,9 @@ export function addItemsCart(data) {
           cart.push(product)
         } else {
           cart = JSON.parse(localStorage.getItem("item"))
-          let index = cart.findIndex((item) => item.producto == product.producto)
+          let index = cart.findIndex(
+            (item) => item.producto == product.producto
+          )
           if (index == -1) {
             cart.push(product)
           } else {
@@ -122,6 +142,9 @@ export function addItemsCart(data) {
         })
         getCartItems()
         removeCartItems()
+        const sidebar = document.querySelector(".sidebar")
+        sidebar.classList.remove("right-[-320px]")
+        sidebar.classList.add("right-0")
       })
     })
   }
@@ -131,6 +154,9 @@ export function getCartItems() {
   let cartItems = document.querySelector(".cartItems")
   let cart = JSON.parse(localStorage.getItem("item") || "[]")
   cartItems.innerHTML = ""
+  if (cart.length == 0) {
+    cartItems.innerHTML += `<h1 class="text-2xl font-bold text-secondary">No hay productos en el carro</h1>`
+  }
   cart.forEach((product) => {
     cartItems.innerHTML += `
     <div class="border flex h-36 items-center rounded-md p-2 shadow-md mb-4">
@@ -139,11 +165,17 @@ export function getCartItems() {
       </div>
       <div class="w-full">
         <h1 class="font-bold">${product.producto}</h1>
-        <h2 class="font-light text-sm">Cantidad: <span class="font-medium text-lg">${product.cantidad}</span></h2>
-        <h1 class="font-medium">Total: $ ${product.precio * product.cantidad}</h1>
+        <h2 class="font-light text-sm">Cantidad: <span class="font-medium text-lg">${
+          product.cantidad
+        }</span></h2>
+        <h1 class="font-medium">Total: $ ${
+          product.precio * product.cantidad
+        }</h1>
       </div>
       <button>
-        <svg id="${product.id}" class="deleteItem cursor-pointer h-8 w-8 hover:scale-105 duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <svg id="${
+          product.id
+        }" class="deleteItem cursor-pointer h-8 w-8 hover:scale-105 duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
         </svg>
       </button>
@@ -165,4 +197,21 @@ export function removeCartItems() {
       getCartItems()
     })
   })
+}
+
+function search(filterText, productArray) {
+  return productArray.filter((product) =>
+    product.producto.toLowerCase().includes(filterText.toLowerCase()) 
+  ) 
+}
+
+export function filterProducts(container, data) {
+  const searchInput = document.getElementById("search")
+  searchInput.addEventListener("keyup", () => {
+    const filterText = document.getElementById("search").value.toLowerCase()
+    const filteredProducts = search(filterText, data)
+    renderProduct(container, filteredProducts)
+
+  })
+  renderProduct(container, data)
 }
