@@ -133,29 +133,41 @@
         </ul>
       </div>
       <script>
-        const btn = document.querySelector("button.mobile-menu-button")
-        const menu = document.querySelector(".mobile-menu")
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
 
         btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden")
-        })
+          menu.classList.toggle("hidden");
+        });
       </script>
     </nav>
 
     <!-- Collapsed Shopping Cart-->
-    <div class="sidebar fixed top-0 bottom-0 right-[-320px] p-2 w-[320px] overflow-y-auto text-center bg-primary-500 ease-in-out duration-300 shadow-md z-50">
+    <div
+      class="sidebar fixed top-0 bottom-0 right-[-320px] p-2 w-[320px] overflow-y-auto text-center bg-primary-500 ease-in-out duration-300 shadow-md z-50"
+    >
       <div class="text-secondary text-xl">
         <div class="p-2.5 mt-1 flex items-center">
-          <svg class="cursor-pointer h-8 w-8 closeButton hover:scale-105 duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>          
-          <h1 class="font-bold  ml-3">Carro de compras</h1>
+          <svg
+            class="cursor-pointer h-8 w-8 closeButton hover:scale-105 duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <h1 class="font-bold ml-3">Carro de compras</h1>
         </div>
-        <hr class="my-2 text-secondary">
+        <hr class="my-2 text-secondary" />
         <!-- Dynamically rendered shopping cart items-->
-        <div class="cartItems">
-
-        </div>
+        <div class="cartItems"></div>
       </div>
     </div>
 
@@ -164,7 +176,9 @@
         class="flex flex-col place-items-start justify-center h-screen bg-cover bg-right"
         style="background-image: url(./assets/images/hero1.jpg)"
       >
-        <div class="bg-black bg-opacity-30 w-full h-full flex items-center justify-center md:justify-start p-4">
+        <div
+          class="bg-black bg-opacity-30 w-full h-full flex items-center justify-center md:justify-start p-4"
+        >
           <div class="md:ml-52">
             <h1 class="text-secondary font-bold tracking-tighter text-7xl">
               Paws and Claws
@@ -249,6 +263,50 @@
         </div>
       </div>
     </section>
+
+    <footer class="flex bg-primary-500">
+      <div
+        class="flex space-x-5 text-center items-center w-full justify-around flex-wrap"
+      >
+        <div class="flex space-x-5 m-5">
+          <a href="#"
+            ><img
+              src="./assets/images/facebook-8-128.png"
+              alt="facebook"
+              class="h-20 w-20 hover:scale-105"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/instagram-3-128.png"
+              alt="instagram"
+              class="h-20 w-20 hover:scale-105"
+          /></a>
+        </div>
+        <div class="m-5">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6980325793484!2d-58.432603848862136!3d-34.61179658036155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405CCB%20CABA%2C%20Argentina!5e0!3m2!1ses!2sco!4v1671721237239!5m2!1ses!2sco"
+            width="300"
+            height="150"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="flex flex-col text-center m-5">
+          <h2 class="font-extrabold text-secondary text-4xl">Politicas</h2>
+          <a href="#" class="text-secondary hover:underline"
+            >Política de tratamiento de datos</a
+          >
+          <a href="#" class="text-secondary hover:underline"
+            >Políticas de devoluciones</a
+          >
+          <a href="#" class="text-secondary hover:underline"
+            >Terminos y condiciones del servicio</a
+          >
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="./js/dynamicProducts.js"></script>
     <script type="module" src="./js/cart.js"></script>
