@@ -6,7 +6,6 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
   .then((products) => {
     productData = products
     getCartItems()
-
     addItemsCart(productData)
     removeCartItems()
   })

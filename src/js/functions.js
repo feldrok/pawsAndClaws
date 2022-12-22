@@ -30,7 +30,15 @@ export function renderProduct(container, productsFiltered) {
     `
   })
   displayProduct = displayProduct.join("")
-  container.innerHTML = displayProduct
+  if (displayProduct === "") {
+    container.innerHTML = `
+    <h2 class="text-4xl font-bold text-primary-500 w-full text-center">
+      No hay productos disponibles
+    </h2>
+    `
+  } else {
+    container.innerHTML = displayProduct
+  }
 }
 
 export function getParameter() {
@@ -189,4 +197,21 @@ export function removeCartItems() {
       getCartItems()
     })
   })
+}
+
+function search(filterText, productArray) {
+  return productArray.filter((product) =>
+    product.producto.toLowerCase().includes(filterText.toLowerCase()) 
+  ) 
+}
+
+export function filterProducts(container, data) {
+  const searchInput = document.getElementById("search")
+  searchInput.addEventListener("keyup", () => {
+    const filterText = document.getElementById("search").value.toLowerCase()
+    const filteredProducts = search(filterText, data)
+    renderProduct(container, filteredProducts)
+
+  })
+  renderProduct(container, data)
 }
