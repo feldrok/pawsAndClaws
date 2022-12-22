@@ -19,10 +19,15 @@ module.exports = {
       },
     },
     variants: {},
+<<<<<<< HEAD
     plugins: [
       require("cssnano")({
         preset: "default",
       }),
     ],
   },
+=======
+    plugins: [],
+  },  
+>>>>>>> 8eda7a32fd058183996b7147608edb4ed2cd8176
 }

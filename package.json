@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build-css": "tailwindcss -i ./src/styles/styles.css -o ./src/styles/compiled.css",
+<<<<<<< HEAD
     "build-dev": "tailwindcss -i ./src/styles/styles.css -o ./src/styles/compiled.css --minify --watch"
+=======
+    "build-dev": "tailwindcss -i ./src/styles/styles.css -o ./src/styles/compiled.css --watch --minify"
+>>>>>>> 8eda7a32fd058183996b7147608edb4ed2cd8176
   },
   "keywords": [],
   "author": "",
