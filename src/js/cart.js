@@ -1,4 +1,4 @@
-import { handleCart, getCartItems, addItemsCart, removeCartItems } from "./functions.js"
+import { handleCart, getCartItems, addItemsCart } from "./functions.js"
 
 let productData
 fetch("https://mindhub-xj03.onrender.com/api/petshop")
@@ -7,7 +7,6 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
     productData = products
     getCartItems()
     addItemsCart(productData)
-    removeCartItems()
   })
   .catch((err) => console.log(err))
 

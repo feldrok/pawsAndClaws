@@ -152,7 +152,6 @@ export function addItemsCart(data) {
           product.cantidad = product.cantidad
         })
         getCartItems()
-        removeCartItems()
         const sidebar = document.querySelector(".sidebar")
         sidebar.classList.remove("right-[-320px]")
         sidebar.classList.add("right-0")
@@ -171,18 +170,18 @@ export function getCartItems() {
   cart.forEach((product) => {
     cartItems.innerHTML += `
     <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500">
-      <div class="w-full h-full flex items-center">
-        <img src="${product.imagen}" alt="" class="object-cover rounded-md">
-      </div>
-      <div class="w-full">
-        <h1 class="font-bold">${product.producto}</h1>
-        <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${
-          product.cantidad
-        }</span></h2>
-        <h1 class="font-medium">Total: $ ${
-          product.precio * product.cantidad
-        }</h1>
-      </div>
+      <a href="./detalleProducto.html?id=${product.id}" class="h-full w-full flex items-center">
+        <div class="w-full h-full flex items-center">
+          <img src="${product.imagen}" alt="" class="object-cover rounded-md h-full">
+        </div>
+        <div class="w-full">
+          <h1 class="font-bold">${product.producto}</h1>
+          <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${product.cantidad}</span></h2>
+          <h1 class="font-medium">Total: $ ${
+            product.precio * product.cantidad
+          }</h1>
+        </div>
+      </a>
       <button>
         <svg id="${
           product.id
@@ -192,6 +191,17 @@ export function getCartItems() {
       </button>
     </div>
     `
+    let removeItem = document.querySelectorAll(".deleteItem")
+    removeItem.forEach((item) => {
+      item.addEventListener("click", () => {
+        let productId = item.getAttribute("id")
+        cart = JSON.parse(localStorage.getItem("item")).filter(
+          (item) => item.id != productId
+        )
+        localStorage.setItem("item", JSON.stringify(cart))
+        getCartItems()
+      })
+    })
   })
 
   let total = 0
@@ -210,21 +220,6 @@ export function getCartItems() {
     Comprar
   </button>
   `
-}
-
-export function removeCartItems() {
-  let cart = JSON.parse(localStorage.getItem("item"))
-  let removeItem = document.querySelectorAll(".deleteItem")
-  removeItem.forEach((item) => {
-    item.addEventListener("click", () => {
-      let productId = item.getAttribute("id")
-      cart = JSON.parse(localStorage.getItem("item")).filter(
-        (item) => item.id != productId
-      )
-      localStorage.setItem("item", JSON.stringify(cart))
-      getCartItems()
-    })
-  })
 }
 
 function search(filterText, productArray) {
