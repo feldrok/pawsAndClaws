@@ -10,9 +10,9 @@ export function renderProduct(container, productsFiltered) {
     }
     return `
     <!-- Cards -->
-    <div class="p-4 w-56 xl:w-80 flex-initial h-full active cursor-pointer transition" id="card">
+    <div class="m-4 w-80 h-full flex-initial active cursor-pointer transition" id="card">
       <div
-        class="bg-white shadow-md border flex flex-col p-4 justify-around rounded-lg hover:scale-105 hover:shadow-none duration-300"
+        class="bg-white h-full shadow-md border flex flex-col p-4 justify-around rounded-lg hover:scale-105 hover:shadow-none duration-300"
       >
         <a href="./detalleProducto.html?id=${product._id}">
           <img
@@ -193,6 +193,23 @@ export function getCartItems() {
     </div>
     `
   })
+
+  let total = 0
+  let containerTotal = document.querySelector(".containerTotal")
+  cart.forEach((product) => {
+    total = total + product.precio * product.cantidad
+  })
+  containerTotal.innerHTML = `
+  <div class="flex justify-between p-2.5 text-secondary">
+    <h1 class="font-bold">Total</h1>
+    <h1 class="font-bold text-2xl">$ ${total}</h1>
+  </div>
+  <button
+    class="bg-secondary text-primary-500 font-bold py-2 px-4 rounded-full hover:scale-105 duration-300 w-full"
+  >
+    Comprar
+  </button>
+  `
 }
 
 export function removeCartItems() {

@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/compiled.css" />
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.png"
+      type="image/x-icon"
+    />
     <title>Paws and Claws | Your favourite store</title>
   </head>
   <body class="bg-secondary select-none">
@@ -134,12 +138,12 @@
         </ul>
       </div>
       <script>
-        const btn = document.querySelector("button.mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+        const btn = document.querySelector("button.mobile-menu-button")
+        const menu = document.querySelector(".mobile-menu")
 
         btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-        });
+          menu.classList.toggle("hidden")
+        })
       </script>
     </nav>
 
@@ -170,16 +174,8 @@
         <!-- Dynamically rendered shopping cart items-->
         <div class="cartItems"></div>
       </div>
-      <div>
-        <div class="flex justify-between p-2.5 text-secondary">
-          <h1 class="font-bold">Total</h1>
-          <h1 class="font-bold text-2xl">$0</h1>
-        </div>
-        <button
-          class="bg-secondary text-primary-500 font-bold py-2 px-4 rounded-full hover:scale-105 duration-300 w-full"
-        >
-          Comprar
-        </button>
+      <div class="containerTotal">
+        <!-- Total dinamico -->
       </div>
     </div>
 
@@ -212,10 +208,12 @@
       >
         <h1 class="font-bold text-2xl text-secondary">Destacados Farmacia</h1>
       </div>
-      <div
-        class="h-auto shadow flex items-center justify-center flex-wrap destacadosFarmacia"
-      >
-        <!-- Dynamically Rendered Cards -->
+      <div class="h-full">
+        <div
+          class="h-full flex items-center justify-center flex-wrap destacadosFarmacia p-4"
+        >
+          <!-- Dynamically Rendered Cards -->
+        </div>
       </div>
     </section>
 
@@ -227,7 +225,7 @@
         <h1 class="font-bold text-2xl text-secondary">Destacados Juguetes</h1>
       </div>
       <div
-        class="h-full shadow flex items-center justify-center flex-wrap destacadosJuguetes"
+        class="h-full shadow flex items-center justify-center flex-wrap destacadosJuguetes p-4"
       >
         <!-- Dynamically Rendered Cards -->
       </div>
@@ -277,7 +275,9 @@
     </section>
 
     <footer class="flex bg-primary-500 w-full">
-      <div class="flex flex-col lg:flex-row items-center w-full justify-around p-4">
+      <div
+        class="flex flex-col lg:flex-row items-center w-full justify-around p-4"
+      >
         <div class="flex w-full justify-center mt-4 space-x-5">
           <a href="#"
             ><img

@@ -170,16 +170,8 @@
         <!-- Dynamically rendered shopping cart items-->
         <div class="cartItems"></div>
       </div>
-      <div>
-        <div class="flex justify-between p-2.5 text-secondary">
-          <h1 class="font-bold">Total</h1>
-          <h1 class="font-bold text-2xl">$0</h1>
-        </div>
-        <button
-          class="bg-secondary text-primary-500 font-bold py-2 px-4 rounded-full hover:scale-105 duration-300 w-full"
-        >
-          Comprar
-        </button>
+      <div class="containerTotal">
+        <!-- Total dinamico -->
       </div>
     </div>
 
@@ -265,9 +257,9 @@
                 >
                 <select
                   id="tipoMascota"
-                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  class="w-full h-[42px] bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-400 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 >
-                  <option selected>Tipo mascota</option>
+                  <option disabled selected>Tipo mascota</option>
                   <option value="US">Perro</option>
                   <option value="CA">Gato</option>
                   <option value="FR">Ave</option>
