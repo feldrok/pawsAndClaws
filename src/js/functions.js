@@ -1,5 +1,13 @@
 export function renderProduct(container, productsFiltered) {
+  let warning
   let displayProduct = productsFiltered.map((product) => {
+    if (product.disponibles === 0) {
+      warning = `<span class="title-font font-medium text-sm text-red-500 mt-6">Producto agotado</span>`
+    } else if (product.disponibles < 5) {
+      warning = `<span class="title-font font-medium text-sm text-yellow-500 mt-6">Últimas unidades disponibles</span>`
+    } else {
+      warning = `<span class="title-font font-medium text-sm text-green-500 mt-6">Unidades disponibles</span>`
+    }
     return `
     <!-- Cards -->
     <div class="p-4 w-56 xl:w-80 flex-initial h-full active cursor-pointer transition" id="card">
@@ -20,6 +28,9 @@ export function renderProduct(container, productsFiltered) {
             >
               ${product.producto}
             </h2>
+          </div>
+          <div>
+            ${warning}
           </div>
         </a>
         <div class="flex mt-6 items-center justify-center">
@@ -159,13 +170,13 @@ export function getCartItems() {
   }
   cart.forEach((product) => {
     cartItems.innerHTML += `
-    <div class="border flex h-36 items-center rounded-md p-2 shadow-md mb-4">
+    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500">
       <div class="w-full h-full flex items-center">
-        <img src="${product.imagen}" alt="" class="object-cover">
+        <img src="${product.imagen}" alt="" class="object-cover rounded-md">
       </div>
       <div class="w-full">
         <h1 class="font-bold">${product.producto}</h1>
-        <h2 class="font-light text-sm">Cantidad: <span class="font-medium text-lg">${
+        <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${
           product.cantidad
         }</span></h2>
         <h1 class="font-medium">Total: $ ${

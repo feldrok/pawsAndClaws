@@ -170,6 +170,17 @@
         <!-- Dynamically rendered shopping cart items-->
         <div class="cartItems"></div>
       </div>
+      <div>
+        <div class="flex justify-between p-2.5 text-secondary">
+          <h1 class="font-bold">Total</h1>
+          <h1 class="font-bold text-2xl">$0</h1>
+        </div>
+        <button
+          class="bg-secondary text-primary-500 font-bold py-2 px-4 rounded-full hover:scale-105 duration-300 w-full"
+        >
+          Comprar
+        </button>
+      </div>
     </div>
 
     <section class="text-gray-600 body-font relative">
@@ -268,13 +279,13 @@
             </div>
             <div class="p-2 w-1/2">
               <div class="relative">
-                <label for="email" class="leading-7 text-sm text-primary-500"
+                <label for="nombreMascota" class="leading-7 text-sm text-primary-500"
                   >Nombre Mascota</label
                 >
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
+                  type="text"
+                  id="nombreMascota"
+                  name="nombreMascota"
                   class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Pelusa"
                 />

@@ -12,3 +12,4 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
   .catch((err) => console.log(err))
 
 handleCart()
+
