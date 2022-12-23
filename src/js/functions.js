@@ -169,7 +169,7 @@ export function getCartItems() {
   }
   cart.forEach((product) => {
     cartItems.innerHTML += `
-    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500 hover:scale-105 duration-300">
+    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500 hover:shadow-none hover:scale-105 duration-300">
       <a href="./detalleProducto.html?id=${product.id}" class="h-full w-full flex items-center">
         <div class="w-full h-full flex items-center">
           <img src="${product.imagen}" alt="" class="object-cover rounded-md h-full">
