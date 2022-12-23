@@ -236,5 +236,32 @@ export function filterProducts(container, data) {
     renderProduct(container, filteredProducts)
 
   })
+
   renderProduct(container, data)
+}
+
+export function searchDropdown(data) {
+  const searchInput = document.getElementById("search")
+  searchInput.addEventListener("keyup", () => {
+    const filterText = document.getElementById("search").value.toLowerCase()
+    const filteredProducts = search(filterText, data)
+    let displaySearch = filteredProducts.map((product) => {
+      return `
+      <a href="./detalleProducto.html?id=${product._id}" class="h-10 flex items-center p-2 m-1 bg-primary-500 hover:bg-primary-400 text-secondary rounded-md">
+        <div  >
+          <p>${product.producto}</p>
+        </div>
+      </a>
+      `
+    })
+    let searchDropdown = document.querySelector(".searchDropdown")
+    searchDropdown.innerHTML = displaySearch.join("")
+    if (filterText != "") {
+      searchDropdown.classList.add("flex")
+      searchDropdown.classList.remove("hidden")
+    } else {
+      searchDropdown.classList.add("hidden")
+      searchDropdown.classList.remove("flex")
+    }
+  })
 }
