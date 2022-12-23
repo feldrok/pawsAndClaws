@@ -72,7 +72,7 @@ export function renderProductDetails(productId, data, container) {
   container.innerHTML = `
     <div class="container px-5 py-24 mx-auto flex">
       <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center">
-        <img alt="ecommerce" class="md:w-1/2 w-10/12 object-cover object-center rounded border border-gray-200" src="${products.imagen}">
+        <img alt="ecommerce" class="md:w-1/2 w-10/12 object-cover object-center rounded border border-gray-200 shadow-md" src="${products.imagen}">
         <div class="lg:w-1/2 w-full p-8 lg:p-10 mt-6 lg:mt-0 flex flex-col">
           <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">${products.categoria}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mt-4">${products.producto}</h1>
@@ -83,7 +83,7 @@ export function renderProductDetails(productId, data, container) {
             <span class="title-font font-bold text-4xl text-gray-900 mt-6">$ ${products.precio}</span>
           </div>
           <div class="flex mt-6">
-            <button id="${products._id}" class="addItem flex text-white bg-primary-500 border-0 py-2 px-6 focus:outline-none hover:bg-primary-300 duration-300 rounded">Agregar al carro</button>
+            <button id="${products._id}" class="addItem flex text-white bg-primary-500 border-0 py-2 px-6 focus:outline-none hover:bg-primary-300 shadow-md hover:scale-105 hover:shadow-none duration-300 rounded">Agregar al carro</button>
             <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -152,7 +152,6 @@ export function addItemsCart(data) {
           product.cantidad = product.cantidad
         })
         getCartItems()
-        removeCartItems()
         const sidebar = document.querySelector(".sidebar")
         sidebar.classList.remove("right-[-320px]")
         sidebar.classList.add("right-0")
@@ -170,19 +169,19 @@ export function getCartItems() {
   }
   cart.forEach((product) => {
     cartItems.innerHTML += `
-    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500">
-      <div class="w-full h-full flex items-center">
-        <img src="${product.imagen}" alt="" class="object-cover rounded-md">
-      </div>
-      <div class="w-full">
-        <h1 class="font-bold">${product.producto}</h1>
-        <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${
-          product.cantidad
-        }</span></h2>
-        <h1 class="font-medium">Total: $ ${
-          product.precio * product.cantidad
-        }</h1>
-      </div>
+    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500 hover:shadow-none hover:scale-105 duration-300">
+      <a href="./detalleProducto.html?id=${product.id}" class="h-full w-full flex items-center">
+        <div class="w-full h-full flex items-center">
+          <img src="${product.imagen}" alt="" class="object-cover rounded-md h-full">
+        </div>
+        <div class="w-full">
+          <h1 class="font-bold">${product.producto}</h1>
+          <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${product.cantidad}</span></h2>
+          <h1 class="font-medium">Total: $ ${
+            product.precio * product.cantidad
+          }</h1>
+        </div>
+      </a>
       <button>
         <svg id="${
           product.id
@@ -192,6 +191,17 @@ export function getCartItems() {
       </button>
     </div>
     `
+    let removeItem = document.querySelectorAll(".deleteItem")
+    removeItem.forEach((item) => {
+      item.addEventListener("click", () => {
+        let productId = item.getAttribute("id")
+        cart = JSON.parse(localStorage.getItem("item")).filter(
+          (item) => item.id != productId
+        )
+        localStorage.setItem("item", JSON.stringify(cart))
+        getCartItems()
+      })
+    })
   })
 
   let total = 0
@@ -212,21 +222,6 @@ export function getCartItems() {
   `
 }
 
-export function removeCartItems() {
-  let cart = JSON.parse(localStorage.getItem("item"))
-  let removeItem = document.querySelectorAll(".deleteItem")
-  removeItem.forEach((item) => {
-    item.addEventListener("click", () => {
-      let productId = item.getAttribute("id")
-      cart = JSON.parse(localStorage.getItem("item")).filter(
-        (item) => item.id != productId
-      )
-      localStorage.setItem("item", JSON.stringify(cart))
-      getCartItems()
-    })
-  })
-}
-
 function search(filterText, productArray) {
   return productArray.filter((product) =>
     product.producto.toLowerCase().includes(filterText.toLowerCase()) 
@@ -241,5 +236,32 @@ export function filterProducts(container, data) {
     renderProduct(container, filteredProducts)
 
   })
+
   renderProduct(container, data)
+}
+
+export function searchDropdown(data) {
+  const searchInput = document.getElementById("search")
+  searchInput.addEventListener("keyup", () => {
+    const filterText = document.getElementById("search").value.toLowerCase()
+    const filteredProducts = search(filterText, data)
+    let displaySearch = filteredProducts.map((product) => {
+      return `
+      <a href="./detalleProducto.html?id=${product._id}" class="h-10 flex items-center p-2 m-1 bg-primary-500 hover:bg-primary-400 text-secondary rounded-md">
+        <div  >
+          <p>${product.producto}</p>
+        </div>
+      </a>
+      `
+    })
+    let searchDropdown = document.querySelector(".searchDropdown")
+    searchDropdown.innerHTML = displaySearch.join("")
+    if (filterText != "") {
+      searchDropdown.classList.add("flex")
+      searchDropdown.classList.remove("hidden")
+    } else {
+      searchDropdown.classList.add("hidden")
+      searchDropdown.classList.remove("flex")
+    }
+  })
 }
