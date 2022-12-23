@@ -1,10 +1,18 @@
 export function renderProduct(container, productsFiltered) {
+  let warning
   let displayProduct = productsFiltered.map((product) => {
+    if (product.disponibles === 0) {
+      warning = `<span class="title-font font-medium text-sm text-red-500 mt-6">Producto agotado</span>`
+    } else if (product.disponibles < 5) {
+      warning = `<span class="title-font font-medium text-sm text-yellow-500 mt-6">Últimas unidades disponibles</span>`
+    } else {
+      warning = `<span class="title-font font-medium text-sm text-green-500 mt-6">Unidades disponibles</span>`
+    }
     return `
     <!-- Cards -->
-    <div class="p-4 w-56 xl:w-80 flex-initial h-full active cursor-pointer transition" id="card">
+    <div class="m-4 w-80 h-full flex-initial active cursor-pointer transition" id="card">
       <div
-        class="bg-white shadow-md border flex flex-col p-4 justify-around rounded-lg hover:scale-105 hover:shadow-none duration-300"
+        class="bg-white h-full shadow-md border flex flex-col p-4 justify-around rounded-lg hover:scale-105 hover:shadow-none duration-300"
       >
         <a href="./detalleProducto.html?id=${product._id}">
           <img
@@ -21,6 +29,9 @@ export function renderProduct(container, productsFiltered) {
               ${product.producto}
             </h2>
           </div>
+          <div>
+            ${warning}
+          </div>
         </a>
         <div class="flex mt-6 items-center justify-center">
             <button id="${product._id}" class="addItem flex text-white bg-primary-500 border-0 py-2 px-6 focus:outline-none hover:bg-primary-300 duration-300 rounded">Agregar al carro</button>
@@ -30,7 +41,15 @@ export function renderProduct(container, productsFiltered) {
     `
   })
   displayProduct = displayProduct.join("")
-  container.innerHTML = displayProduct
+  if (displayProduct === "") {
+    container.innerHTML = `
+    <h2 class="text-4xl font-bold text-primary-500 w-full text-center p-24">
+      No hay productos disponibles
+    </h2>
+    `
+  } else {
+    container.innerHTML = displayProduct
+  }
 }
 
 export function getParameter() {
@@ -151,13 +170,13 @@ export function getCartItems() {
   }
   cart.forEach((product) => {
     cartItems.innerHTML += `
-    <div class="border flex h-36 items-center rounded-md p-2 shadow-md mb-4">
+    <div class="bg-secondary flex h-36 items-center rounded-md p-2 shadow-md mb-4 text-primary-500">
       <div class="w-full h-full flex items-center">
-        <img src="${product.imagen}" alt="" class="object-cover">
+        <img src="${product.imagen}" alt="" class="object-cover rounded-md">
       </div>
       <div class="w-full">
         <h1 class="font-bold">${product.producto}</h1>
-        <h2 class="font-light text-sm">Cantidad: <span class="font-medium text-lg">${
+        <h2 class="font-medium text-sm">Cantidad: <span class="font-medium text-lg">${
           product.cantidad
         }</span></h2>
         <h1 class="font-medium">Total: $ ${
@@ -174,6 +193,23 @@ export function getCartItems() {
     </div>
     `
   })
+
+  let total = 0
+  let containerTotal = document.querySelector(".containerTotal")
+  cart.forEach((product) => {
+    total = total + product.precio * product.cantidad
+  })
+  containerTotal.innerHTML = `
+  <div class="flex justify-between p-2.5 text-secondary">
+    <h1 class="font-bold">Total</h1>
+    <h1 class="font-bold text-2xl">$ ${total}</h1>
+  </div>
+  <button
+    class="bg-secondary text-primary-500 font-bold py-2 px-4 rounded-full hover:scale-105 duration-300 w-full"
+  >
+    Comprar
+  </button>
+  `
 }
 
 export function removeCartItems() {
@@ -189,4 +225,21 @@ export function removeCartItems() {
       getCartItems()
     })
   })
+}
+
+function search(filterText, productArray) {
+  return productArray.filter((product) =>
+    product.producto.toLowerCase().includes(filterText.toLowerCase()) 
+  ) 
+}
+
+export function filterProducts(container, data) {
+  const searchInput = document.getElementById("search")
+  searchInput.addEventListener("keyup", () => {
+    const filterText = document.getElementById("search").value.toLowerCase()
+    const filteredProducts = search(filterText, data)
+    renderProduct(container, filteredProducts)
+
+  })
+  renderProduct(container, data)
 }

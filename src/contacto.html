@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/compiled.css" />
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
     <title>Paws and Claws | Your favourite store</title>
   </head>
-  <body class="bg-secondary">
+  <body class="bg-secondary select-none">
     <nav class="bg-secondary shadow-md">
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
@@ -26,8 +27,8 @@
           <!-- Primary Navbar items -->
           <div class="hidden md:flex items-center space-x-1 gap-2">
             <a
-              href="#"
-              class="py-2 px-4 text-secondary bg-primary-500 rounded-xl font-semibold"
+              href="./index.html"
+              class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
               >Inicio</a
             >
             <a
@@ -42,7 +43,7 @@
             >
             <a
               href="./contacto.html"
-              class="py-2 px-4 text-primary-500 font-semibold hover:text-secondary hover:bg-primary-400 rounded-xl transition duration-300"
+              class="py-2 px-4 text-secondary bg-primary-500 rounded-xl font-semibold"
               >Contacto</a
             >
             <a
@@ -104,8 +105,8 @@
         <ul class="">
           <li class="active">
             <a
-              href="#"
-              class="block text-sm px-2 py-4 text-white bg-primary-500 font-semibold"
+              href="./index.html"
+              class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
               >Inicio</a
             >
           </li>
@@ -125,7 +126,7 @@
           </li>
           <li>
             <a
-              href="./contact.html"
+              href="./contacto.html"
               class="block text-sm px-2 py-4 font-semibold text-primary-500 hover:bg-primary-300 hover:text-white transition duration-300"
               >Contacto</a
             >
@@ -133,12 +134,12 @@
         </ul>
       </div>
       <script>
-        const btn = document.querySelector("button.mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+        const btn = document.querySelector("button.mobile-menu-button")
+        const menu = document.querySelector(".mobile-menu")
 
         btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
-        });
+          menu.classList.toggle("hidden")
+        })
       </script>
     </nav>
 
@@ -169,84 +170,196 @@
         <!-- Dynamically rendered shopping cart items-->
         <div class="cartItems"></div>
       </div>
+      <div class="containerTotal">
+        <!-- Total dinamico -->
+      </div>
     </div>
 
-    <section class="flex flex-col content-center h-screen">
-        <div class="flex w-full justify-center">        
-            <h1 class="text-primary-500 text-6xl">Encuentrenos aqui</h1>
+    <section class="text-gray-600 body-font relative">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-primary-500"
+          >
+            Contactanos
+          </h1>
+          <p
+            class="lg:w-2/3 mx-auto leading-relaxed text-base text-primary-500"
+          >
+            Si necesitas mayor información sobre tu mascota, envía el formulario
+            con los datos necesarios.
+          </p>
         </div>
-        <!-- <div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1641.8480280076174!2d-58.431467812151205!3d-34.61184655178373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405CCB%20CABA!5e0!3m2!1ses!2sar!4v1671650174119!5m2!1ses!2sar"
-            width="600"
-            height="450"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div> -->
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <form id="form" class="flex flex-wrap -m-2">
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="name" class="leading-7 text-sm text-primary-500"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Juan"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-primary-500"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Perez"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="phone" class="leading-7 text-sm text-primary-500"
+                  >Teléfono</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="+ xx x xxxx xxxx"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-primary-500"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="example@gmail.com"
+                />
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label
+                  for="tipoMascota"
+                  class="leading-7 text-sm text-primary-500"
+                  >Tipo Mascota</label
+                >
+                <select
+                  id="tipoMascota"
+                  class="w-full h-[42px] bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-400 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
+                  <option disabled selected>Tipo mascota</option>
+                  <option value="US">Perro</option>
+                  <option value="CA">Gato</option>
+                  <option value="FR">Ave</option>
+                  <option value="DE">Animal Pequeño</option>
+                  <option value="DE">Reptil</option>
+                  <option value="DE">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="nombreMascota" class="leading-7 text-sm text-primary-500"
+                  >Nombre Mascota</label
+                >
+                <input
+                  type="text"
+                  id="nombreMascota"
+                  name="nombreMascota"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Pelusa"
+                />
+              </div>
+            </div>
+
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="message" class="leading-7 text-sm text-primary-500"
+                  >Mensaje</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  class="w-full bg-white bg-opacity-50 rounded border border-gray-300 focus:border-primary-500 focus:bg-white focus:ring-2 focus:ring-primary-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                  placeholder="Escribe algo..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <input
+                type="submit"
+                class="flex mx-auto text-white bg-primary-500 border-0 py-2 px-8 focus:outline-none hover:bg-primary-400 shadow-md hover:shadow-none hover:scale-105 duration-300 rounded-full text-lg cursor-pointer"
+              />
+            </div>
+          </form>
+
+          <div id="output" class="flex p-4 justify-center">
+
+          </div>
+          <div
+            class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
+          >
+            <a class="text-primary-500" href="mailto:contact@pawsandclaws.com"
+              >contact@pawsandclaws.com</a
+            >
+            <p class="leading-normal my-5">
+              Rio de Janeiro 300,<br />Buenos Aires
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-      <!-- <section
-        class="flex bg-primary-500 justify-items-center text-center text-secondary"
-      >
-        <form action="">
-          <div>
-            <label for="">Nombre</label>
-            <input type="text" />
-            <label for="">Apellido</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label for="">Telefono</label>
-            <input type="text" />
-            <label for="">Mail</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label for="">Tipo de Mascota</label>
-            <input type="text" />
-            <label for="">Nombre</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label for="">Mensaje que quieras dejarnos</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-          </div>
-        </form>
-      </section> -->
 
+    <script>
+      const form = document.getElementById("form")
+      const output = document.getElementById("output")
 
-    <footer class="flex bg-primary-500">
-      <div
-        class="flex text-center items-center w-full justify-around flex-wrap"
-      >
-        <div class="flex m-5 space-x-5">
+      form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        output.innerHTML = `<p class="text-center font-medium text-primary-500">Se ha enviado correctamente, nos contactaremos contigo a la brevedad, muchas gracias!</p>`
+      })
+
+    </script>
+
+    <footer class="flex bg-primary-500 w-full">
+      <div class="flex flex-col lg:flex-row items-center w-full justify-around p-4">
+        <div class="flex w-full justify-center mt-4 space-x-5">
           <a href="#"
             ><img
               src="./assets/images/facebook-8-128.png"
               alt="facebook"
-              class="h-20 w-20 hover:scale-105"
+              class="h-12 w-12 hover:scale-105 duration-300"
           /></a>
           <a href="#"
             ><img
               src="./assets/images/instagram-3-128.png"
               alt="instagram"
-              class="h-20 w-20 hover:scale-105"
+              class="h-12 w-12 hover:scale-105 duration-300"
           /></a>
         </div>
-        <div class="m-5">
+        <div class="w-full flex justify-center mt-4 lg:mb-0 lg: mb-0">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6980325793484!2d-58.432603848862136!3d-34.61179658036155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405CCB%20CABA%2C%20Argentina!5e0!3m2!1ses!2sco!4v1671721237239!5m2!1ses!2sco"
             width="300"
             height="150"
-            style="border: 0"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div class="flex flex-col text-center m-5">
+        <div class="flex flex-col items-center w-full">
           <h2 class="font-extrabold text-secondary text-4xl">Politicas</h2>
           <a href="#" class="text-secondary hover:underline"
             >Política de tratamiento de datos</a

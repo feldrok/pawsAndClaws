@@ -1,4 +1,4 @@
-import { renderProduct, handleCart } from "./functions.js"
+import { renderProduct, handleCart, filterProducts } from "./functions.js"
 
 let data
 let productsFarmacia
@@ -17,10 +17,11 @@ fetch("https://mindhub-xj03.onrender.com/api/petshop")
     const destacadosJuguetes = document.querySelector(".destacadosJuguetes")
     const containerFarmacia = document.querySelector(".containerFarmacia")
     const containerJuguetes = document.querySelector(".containerJuguetes")
+
     if (destacadosFarmacia) renderProduct(destacadosFarmacia, productsFarmacia.slice(0, 4))
     if (destacadosJuguetes) renderProduct(destacadosJuguetes, productsJuguetes.slice(0, 4))
-    if (containerFarmacia) renderProduct(containerFarmacia, productsFarmacia)
-    if (containerJuguetes) renderProduct(containerJuguetes, productsJuguetes)
+    if (containerFarmacia) filterProducts(containerFarmacia, productsFarmacia) 
+    if (containerJuguetes) filterProducts(containerJuguetes, productsJuguetes)
   })
   .catch((err) => console.log(err))
 
